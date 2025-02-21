@@ -2,7 +2,7 @@
 //link: https://leetcode.com/problems/find-elements-in-a-contaminated-binary-tree/description/
 //solution
 
-//Time Complexity: O(N^2) for FindElement function, and O(1) for find function
+//Time Complexity: O(N) for FindElement function: for BFS, O(N), and insert operation in unordered set is O(1), and O(1) for find function
 //space complexity: O(N)
 class FindElements {
 public:
