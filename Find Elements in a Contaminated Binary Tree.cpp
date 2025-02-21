@@ -2,6 +2,8 @@
 //link: https://leetcode.com/problems/find-elements-in-a-contaminated-binary-tree/description/
 //solution
 
+//Time Complexity: O(N^2) for FindElement function, and O(1) for find function
+//space complexity: O(N)
 class FindElements {
 public:
     TreeNode* node=NULL;
