@@ -4,7 +4,6 @@
 class Solution {
 public:
     vector<int> applyOperations(vector<int>& nums) {
-        
         int n = nums.size();
         int index=0;
         while(index<n-1)
