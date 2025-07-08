@@ -148,3 +148,48 @@ public:
 // - Time Complexity: theta(n^2)
 // - Space Complexity: theta(n)
 
+
+// using binary search
+class Solution {
+public:
+    int ceilInd(vector<int> lis, int s, int e, int x)
+{
+    while(s<e)
+    {
+        int m = s + (e-s)/2;
+        if(lis[m]>=x)
+        {
+            e=m;
+        }
+        else
+        {
+            s=m+1;
+        }
+    }
+    return s;
+}
+    int lengthOfLIS(vector<int>& nums) {
+        
+        vector<int> lis;
+        int n = nums.size();
+        lis.push_back(nums[0]);
+        int len=1;
+        for(int i=1;i<n;i++)
+        {
+            if(nums[i]>lis.back())
+            {
+                lis.push_back(nums[i]);
+                len++;
+            }
+            else
+            {
+                // binary search
+                int c = ceilInd(lis,0,len-1,nums[i]);
+                lis[c]=nums[i];
+            }
+        }
+        return len;
+    }
+};
+// - Time Complexity: O(nlog n)
+// - Space Complexity: theta(n)
