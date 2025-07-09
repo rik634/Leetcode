@@ -12,6 +12,7 @@ public:
     {
       parent[i]=i;
     }
+    
   }
   int findUPar(int node)
   {
