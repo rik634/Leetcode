@@ -20,11 +20,11 @@ public:
         vector<vector<int>> arr(m,vector<int>(m));
         for(int i=0;i<m;i++)
         {
-            f=1;
+            long long x=1;
             for(int j=i;j<m;j++)
             {
-                f = (long long) (f*power[j])%mod;
-                arr[i][j]=f;
+                x = (long long) (x*power[j])%mod;
+                arr[i][j]=x;
             }
         }
         vector<int> answer;
