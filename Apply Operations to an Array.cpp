@@ -8,6 +8,7 @@ public:
         int index=0;
         while(index<n-1)
         {
+            
             if(nums[index]==nums[index+1])
             {
                 nums[index]=2*nums[index];
