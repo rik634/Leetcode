@@ -12,7 +12,7 @@ class Solution {
         int profit;
         if(day)
         {
-            profit = max(-prices[ind]+f(ind+1,0, prices),f(ind+1,1,prices));
+             profit = max(-prices[ind]+f(ind+1,0, prices),f(ind+1,1,prices));
         }
         else
         {
