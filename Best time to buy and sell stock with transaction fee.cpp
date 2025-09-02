@@ -9,6 +9,7 @@ public:
             return 0;
         }
         int profit=0;
+        
         if(buy)
         {
             profit = max(-prices[ind]-fee+f(ind+1,0,prices,fee),f(ind+1,1,prices,fee));
