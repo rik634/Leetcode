@@ -10,6 +10,7 @@ public:
         }
         if(ind==prices.size())
         {
+            
             return 0;
         }
         int profit=0;
