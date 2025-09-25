@@ -2,7 +2,6 @@
 // recursion
 class Solution {
 public:
-
     int f(int ind, int buy, vector<int>& prices)
     {
         if(ind>=prices.size())
