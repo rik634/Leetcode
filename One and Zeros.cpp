@@ -54,5 +54,5 @@ public:
         
     }
 };
-// time complexity: O((s*m*n)* constant)
+// time complexity: O((s*m*n)* length of longest string)
 // space complexity: O(s*m*n)
