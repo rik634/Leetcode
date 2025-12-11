@@ -4,27 +4,25 @@ public:
     int countCoveredBuildings(int n, vector<vector<int>>& buildings) {
         
         int m = buildings.size();
-        unordered_map<int,vector<int>> row;
-        unordered_map<int,vector<int>> col;
-        int minX=INT_MAX;
-        int maxX=INT_MIN;
-        int minY=INT_MAX;
-        int maxY=INT_MIN;
+         vector<int> minx(n + 1, n + 1);
+        vector<int> maxx(n + 1, 0);
+        vector<int> miny(n + 1, n + 1);
+        vector<int> maxy(n + 1, 0);
         for(auto it:buildings)
         {
             int x = it[0];
             int y = it[1];
-            minX=min(minX,x);
-            maxX=max(maxX,x);
-            minY=min(minY,y);
-            maxY=max(maxY,y);
+            minx[y] = min(minx[y], x);
+            maxx[y] = max(maxx[y], x);
+            miny[x] = min(miny[x], y);
+            maxy[x] = max(maxy[x], y);
         }
         int count=0;
         for(auto it:buildings)
         {
             int r = it[0];
             int c = it[1];
-            if(r>minX && r<maxX && c>minY && c<maxY)
+           if(minx[c] < r && r < maxx[c] && miny[r] < c && c < maxy[r])
             {
                 count++;
             }
