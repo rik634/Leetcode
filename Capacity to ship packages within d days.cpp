@@ -49,7 +49,7 @@ public:
         return -1;
     }
 };
-// Time complexity: O(mx*n)
+// Time complexity: O((sum-mx)*n)
 // space complexity: O(1)
 
 // binary search
@@ -111,5 +111,5 @@ public:
         return ans;
     }
 };
-// Time complexity: O(n*logmx) + O(n) = O(n*(logmx+1))
+// Time complexity: O(n*log(sum-mx)) + O(n) = O(n*(log(sum-mx)+1))
 // space complexity: O(1)
