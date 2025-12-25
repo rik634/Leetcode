@@ -31,9 +31,14 @@ public:
     int shipWithinDays(vector<int>& weights, int days) {
         
         int n = weights.size();
-        int mx = accumulate(weights.begin(),weights.end(),0);
-
-        for(int i=1;i<=mx;i++)
+        int mx=0;
+        int mn = INT_MIN;
+        for(int i=0;i<n;i++)
+        {
+            mx+=weights[i];
+            mn=max(mn,weights[i]);
+        }
+        for(int i=mn;i<=mx;i++)
         {
             int d = countDays(weights,i);
             if(d<=days)
@@ -80,11 +85,11 @@ public:
         
         int n = weights.size();
         int mx=0;
-        int mn = INT_MAX;
+        int mn = INT_MIN;
         for(int i=0;i<n;i++)
         {
             mx+=weights[i];
-            mn=min(mn,weights[i]);
+            mn=max(mn,weights[i]);
         }
         int l=mn;
         int r=mx;
