@@ -1,7 +1,7 @@
 // Level: Medium
 // problem statement:  Given a string, find all the possible subsequences of the string.
-// brute force
 
+// brute force (bit manipulation)
 class Solution {
 public:
     vector<vector<int>> subsets(vector<int>& nums) {
@@ -51,3 +51,6 @@ public:
 };
 // time complexity: O(n*(2^n))
 // space complexity:O(n*(2^n))
+
+
+
