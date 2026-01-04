@@ -36,7 +36,41 @@ public:
 //Time Complexity: O(n²) because for each bar, we scan all bars to its left and right to find the maximum height, resulting in nested loops.
 //Space Complexity: O(1) as no additional data structures are used proportional to input size, only variables to track max heights and total water.
 
-// optimized
+// optimizes (monotonic stack)
+int maxWater(vector<int>& arr) {
+    stack<int> st;  
+    int res = 0;
+    for (int i = 0; i < arr.size(); i++) {
+       
+        // Pop all items smaller than arr[i]
+        while (!st.empty() && arr[st.top()] < arr[i]) {          
+            
+            int pop_height = arr[st.top()];
+            st.pop();
+          
+            if (st.empty())
+                break;
+
+            // arr[i] is the next greater for the removed item
+            // and new stack top is the previous greater 
+            int distance = i - st.top() - 1;
+          
+            // Take the minimum of two heights (next and prev greater)
+            // and find the amount of water that we can fill in all
+            // bars between the two
+            int water = min(arr[st.top()], arr[i]) - pop_height;
+
+            res += distance * water;
+        }
+        st.push(i);
+    }
+    return res;
+}
+// time complexity:O(n)
+// space complexity: O(n)
+
+
+// optimized (two pointers)
 class Solution {
 public:
     // Function to calculate trapped rainwater using the optimal two-pointer approach
@@ -84,3 +118,4 @@ public:
 };
 // time complexity: O(n) because the two pointers traverse the array only once, each pointer moving inward and covering the entire array in total linear time.
 // space complexity: O(1) as only constant extra space is used for pointers and variables, regardless of input size.
+
