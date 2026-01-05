@@ -45,7 +45,7 @@ public:
     }
 };
 //Time Complexity: O(V+E), we visit every node and for every node we visit all of its neighbours in the DFS traversal.
-//Space Complexity: O(N), for storing visited array and auxiliary stack space.
+//Space Complexity: O(N+E), for storing visited array and auxiliary stack space,adjacency list creation.
 
 // using BFS:
 class Solution {
@@ -91,7 +91,7 @@ public:
     }
 };
 //Time Complexity: O(V+E), we visit every node and for every node we visit all of its neighbours in the BFS traversal.
-//Space Complexity: O(N), for storing visited array and queue.
+//Space Complexity: O(N)+E, for storing visited array and queue, adjacency list creation.
 
 // Using disjoint set
 
