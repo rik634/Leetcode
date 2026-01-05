@@ -44,6 +44,54 @@ public:
         return count;
     }
 };
+//Time Complexity: O(V+E), we visit every node and for every node we visit all of its neighbours in the DFS traversal.
+//Space Complexity: O(N), for storing visited array and auxiliary stack space.
+
+// using BFS:
+class Solution {
+public:
+    void bfs(int node, vector<bool>& vis, vector<int> adj[]) {
+        vis[node] = true;
+        queue<int> q;
+        q.push(node);
+        while (!q.empty()) {
+            auto p = q.front();
+            q.pop();
+            for (auto it : adj[p]) {
+                if (vis[it] == false) {
+                    vis[it] = true;
+                    q.push(it);
+                }
+            }
+        }
+    }
+    int findCircleNum(vector<vector<int>>& isConnected) {
+
+        int n = isConnected.size();
+        // o based indexing
+        vector<int> adj[n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (isConnected[i][j] == 1) {
+                    adj[i].push_back(j);
+                    adj[j].push_back(i);
+                }
+            }
+        }
+
+        int count = 0;
+        vector<bool> vis(n, false);
+        for (int i = 0; i < n; i++) {
+            if (vis[i] == false) {
+                count++;
+                bfs(i, vis, adj);
+            }
+        }
+        return count;
+    }
+};
+//Time Complexity: O(V+E), we visit every node and for every node we visit all of its neighbours in the BFS traversal.
+//Space Complexity: O(N), for storing visited array and queue.
 
 // Using disjoint set
 
