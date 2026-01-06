@@ -43,3 +43,37 @@ public:
 // Space Complexity: O(2N) + O(N) ~ O(2N): O(2N) for two visited arrays and O(N) for recursive stack space.
 
 // BFS (Kahn's algorithm/ topological sort)
+class Solution {
+public:
+    // Function to detect a cycle in a directed graph
+    bool isCyclic(int V, vector<vector<int>>& adj) {
+        // Initialize indegree array to store incoming edges count
+        vector<int> indegree(V, 0);
+        for (int i = 0; i < V; i++) {
+            for (auto &nbr : adj[i]) {
+                indegree[nbr]++;
+            }
+        }
+        queue<int> q;
+        for (int i = 0; i < V; i++) {
+            if (indegree[i] == 0)
+                q.push(i);
+        }
+        int count = 0;
+        while (!q.empty()) {
+            int node = q.front();
+            q.pop();
+            count++;
+            for (auto &nbr : adj[node]) {
+                indegree[nbr]--;
+                if (indegree[nbr] == 0)
+                    q.push(nbr);
+            }
+        }
+        // If processed node count is not equal to total nodes, a cycle exists
+        return count != V;
+    }
+};
+//Time Complexity: O(V+E), Each vertex and edge is processed exactly once while calculating in-degrees and during the BFS traversal.
+//Space Complexity: O(V+E), We store the adjacency list, an in-degree array and a queue.
+
