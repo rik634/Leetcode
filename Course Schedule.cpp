@@ -1,5 +1,6 @@
 // level: Medium
-// problem statement: 
+// problem statement: There are a total of N tasks, labeled from 0 to N-1. Some tasks may have prerequisites, for example, to do task 0 you have to first complete task 1, which is expressed as a pair: [0, 1]
+//Given the total number of tasks N and a list of prerequisite pairs P, find if it is possible to finish all tasks.
 
 // BFS;
 class Solution {
