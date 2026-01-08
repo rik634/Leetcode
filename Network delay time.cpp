@@ -48,7 +48,7 @@ public:
         return mx;
     }
 };
-// Time complexity:O(V*V)
+// Time complexity:O(V*V+E)
 // space complexity: o(V+E)
 
 // further optimize (using priority queue)
