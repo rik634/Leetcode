@@ -39,7 +39,7 @@ class Solution {
 // Space complexity: O(V)
 
 // basic optimization (early termination)
-//In many real-world graphs, shortest paths are found in fewer than \(V-1\) iterations. We add a changed flag to stop if no updates occurred in a full pass
+//In many real-world graphs, shortest paths are found in fewer than (V-1) iterations. We add a changed flag to stop if no updates occurred in a full pass
 
 class Solution {
   public:
@@ -79,7 +79,7 @@ class Solution {
         return dist;
     }
 };
-// Time Complexity: \(O(V\times E)\) worst-case, but often much closer to \(O(E)\) on average. 
+// Time Complexity: O(V*E) worst-case, but often much closer to O(E) on average. 
 // space complexity: O(V)
 
 // Professional Optimization: The Shortest Path Faster Algorithm (SPFA)
