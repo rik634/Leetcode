@@ -1,5 +1,5 @@
 // Algorithm
-// problem statement: 
+// problem statement:  Given a weighted, undirected, and connected graph of V vertices and E edges. The task is to find the sum of weights of the edges of the Minimum Spanning Tree.
 
 // Prism's Algorithm: 
 // find the sum of all edge weights of the MST
