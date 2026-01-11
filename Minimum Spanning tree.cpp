@@ -39,5 +39,54 @@ class Solution{
 
 //Space Complexity: O(E) + O(V), where E = no. of edges and V = no. of vertices. O(E) occurs due to the size of the priority queue and O(V) due to the visited array. If we wish to get the mst, we need an extra O(V-1) space to store the edges of the most.
 
+// prim's algorihm (Find MST)
+class Solution {
+public:
+    // Function to find sum of weights of edges of the Minimum Spanning Tree.
+    vector<pair<int,int>> spanningTree(int V, vector<vector<pair<int, int>>>& adj) {
+        // 1. Priority Queue: stores {weight, node, parent}
+        // Min-heap based on the first element (weight)
+        priority_queue<vector<int>, vector<vector<int>>, greater<vector<int>>> pq;
+        // 2. Visited array
+        vector<bool> visited(V, false);
+        // 3. sum variable
+        int sum = 0;
+        // 4. MST array to store edges (parent, node)
+        vector<pair<int, int>> mstEdges;
+        // Start from node 0 with weight 0 and parent -1
+        pq.push({0, 0, -1});
+
+        while (!pq.empty()) {
+            // Pop the element with minimum edge weight
+            auto top = pq.top();
+            pq.pop();
+
+            int wt = top[0];
+            int node = top[1];
+            int parent = top[2];
+            // If node is already visited, skip it
+            if (visited[node]) continue;
+            // Mark node as visited
+            visited[node] = true;
+            // Add weight to total sum
+            sum += wt;
+            // If it's not the starting node, add the edge to MST array
+            if (parent != -1) {
+                mstEdges.push_back({parent, node});
+            }
+            // Iterate through adjacent nodes
+            for (auto it : adj[node]) {
+                int adjNode = it.first;
+                int edgeWt = it.second;
+                // If the neighbor is not visited, push to PQ
+                if (!visited[adjNode]) {
+                    pq.push({edgeWt, adjNode, node});
+                }
+            }
+        }
+        return mstEdges;
+    }
+};
+
 // Kruskal's Algorithm:
 
