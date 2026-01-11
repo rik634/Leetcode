@@ -1,119 +1,84 @@
 // Level: Medium
 // Link: https://leetcode.com/problems/accounts-merge/description/
-class DisjointSet{
-  vector<int> rank, parent, size;
+// problem statement: 
+
+
+// solution:
+class DisjointSet {
+    vector<int> parent, rank, size;
+
 public:
-  DisjointSet(int n)
-  {
-    rank.resize(n+1,0);
-    size.resize(n+1,1);
-    parent.resize(n+1);
-    for(int i=0;i<=n;i++)
-    {
-      parent[i]=i;
+    DisjointSet(int n) {
+        parent.resize(n, 0);
+        rank.resize(n, 0);
+        size.resize(n);
+        for (int i = 0; i < n; i++) {
+            parent[i] = i;
+            size[i] = 0;
+        }
     }
-    
-  }
-  int findUPar(int node)
-  {
-    if(node==parent[node])
-    {
-      return node;
+    int findParent(int x) {
+        if (parent[x] == x) {
+            return x;
+        }
+        return parent[x] = findParent(parent[x]);
     }
-    return parent[node]=findUPar(parent[node]);
-  }
-  void unionByRank(int u, int v)
-  {
-    int pu = findUPar(u);
-    int pv = findUPar(v);
-    if(pu==pv)
-    {
-      return;
+    void unionBySize(int x, int y) {
+        int px = findParent(x);
+        int py = findParent(y);
+        if (px == py) {
+            return;
+        }
+        if (size[px] <= size[py]) {
+            parent[px] = py;
+            size[py] += size[px];
+        } else {
+            parent[py] = px;
+            size[px] += size[py];
+        }
     }
-    if(rank[pu]<rank[pv])
-    {
-      parent[pu]=pv;
-    }
-    else if(rank[pv]<rank[pu])
-    {
-      parent[pv]=pu;
-    }
-    else
-    {
-      parent[pv]=pu;
-      rank[pu]++;
-    }
-  }
-  void unionBySize(int u, int v)
-  {
-    int pu = findUPar(u);
-    int pv = findUPar(v);
-    if(pu==pv)
-    {
-      return;
-    }
-    if(size[pu]<size[pv])
-    {
-      parent[pu]=pv;
-      size[pv]+=size[pu];
-    }
-    else
-    {
-      parent[pv]=pu;
-      size[pu]+=pv;
-    }
-  }
 };
 class Solution {
 public:
     vector<vector<string>> accountsMerge(vector<vector<string>>& accounts) {
-        
+
         int n = accounts.size();
+        unordered_map<string, int> mp;
         DisjointSet ds(n);
-        unordered_map<string,int> mp;
-        // O(N+E) (N= number of indices, E = number of emails) 
-        for(int i=0;i<n;i++)
-        {
-            for(int j=1;j<accounts[i].size();j++)
-            {
-                if(mp.find(accounts[i][j])==mp.end())
-                {
-                    mp.insert({accounts[i][j],i});
-                }
-                else
-                {
-                    ds.unionBySize(mp[accounts[i][j]],i);
+        for (int i = 0; i < n; i++) {
+            for (int j = 1; j < accounts[i].size(); j++) {
+                string mail = accounts[i][j];
+                if (mp.find(mail) == mp.end()) {
+                    mp[mail] = i;
+                } else {
+                    ds.unionBySize(i, mp[mail]);
                 }
             }
         }
-        vector<vector<string>> mergedMail(n);
-        vector<vector<string>> res;
-        // O(E*4*alpha) (in worst case, we will call find E times, for each mail)
-        for(auto it:mp)
-        {
-            string mail = it.first;
-            int uPar = ds.findUPar(it.second);
-            mergedMail[uPar].push_back(mail);
+        vector<string> res[n];
+        for (auto it : mp) {
+            string s = it.first;
+            int node = ds.findParent(it.second);
+            res[node].push_back(s);
         }
-        // O(N*(E*logE + E))
-        for(int i=0;i<n;i++)
-        {
-            if(mergedMail[i].size()==0)
-            {
+
+        vector<vector<string>> ans;
+        for (int i = 0; i < n; i++) {
+            if (res[i].size() == 0) {
                 continue;
             }
-            sort(mergedMail[i].begin(),mergedMail[i].end());
+            sort(res[i].begin(), res[i].end());
             vector<string> temp;
             temp.push_back(accounts[i][0]);
-            for(auto it:mergedMail[i])
-            {
+            for (auto it : res[i]) {
                 temp.push_back(it);
             }
-            res.push_back(temp);
+            ans.push_back(temp);
         }
-        return res;
+        return ans;
     }
 };
-
-// - Time Complexity: O(N+E) + O(E*4*alpha) + O(N*(E*logE + E))
-// - Space Complexity: O(N+E) (merged mail) + O(N+E) (res array) + O(3*N) (parent, size, rank)
+//Time Complexity: O(N+E) + O(E*4ɑ) + O(N*(ElogE + E)) where N = no. of indices or nodes and E = no. of emails. 
+     //The first term is for visiting all the emails. The second term is for merging the accounts. And the third term is for sorting the emails and storing them in the answer array.
+//Space Complexity: O(N)+ O(N) +O(2N) ~ O(N) where N = no. of nodes/indices.
+      //The first and second space is for the ‘mergedMail’ and the ‘ans’ array. The last term is for the parent and size array used inside the Disjoint set data structure.
