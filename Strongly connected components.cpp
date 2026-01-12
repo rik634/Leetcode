@@ -1,5 +1,5 @@
 // Level: Medium
-// problem statement: 
+// problem statement: Given a Directed Graph with V vertices (Numbered from 0 to V-1) and E edges, Find the number of strongly connected components in the graph..
 
 // Kosaraju's Algorithm/ Method (topo sort, rev edges, reverse DFS)
 //Position this line where user code will be pasted.
