@@ -1,57 +1,54 @@
 // Level: Hard
 // Link: https://leetcode.com/problems/critical-connections-in-a-network/description/
+// problem statement: There are n servers numbered from 0 to n - 1 connected by undirected server-to-server connections forming a network where connections[i] = [ai, bi] represents a connection between servers ai and bi. Any server can reach other servers directly or indirectly through 
+  //the network.A critical connection is a connection that, if removed, will make some servers unable to reach some other servers. Return all critical connections in the network in any order.
 // Solution
 class Solution {
-private:
-    int timer=1;
-private:
-    void dfs(int node, int parent, vector<bool>& vis, vector<vector<int>>& adj, vector<int>& low, vector<int>& tin,  vector<vector<int>>& bridges)
+public:
+int time=0;
+    void dfs(int u, int parent,vector<int>& low, vector<int>& disc, vector<int> adj[],vector<vector<int>>& bridges)
     {
-        vis[node]=true;
-        tin[node]=low[node]=timer;
-        timer++;
-        for(auto it:adj[node])
+        time++;
+        low[u]=disc[u]=time;
+
+        for(auto v:adj[u])
         {
-            if(it==parent)
+            if(v==parent)
             {
                 continue;
             }
-            if(vis[it]==false)
+            if(disc[v]==-1)
             {
-                dfs(it,node,vis,adj,low,tin,bridges);
-                low[node]=min(low[node],low[it]);
-                if(low[it]>tin[node])
+                dfs(v,u,low,disc,adj,bridges);
+                low[u]=min(low[u],low[v]);
+                if(low[v]>disc[u])
                 {
-                    bridges.push_back({it,node});
+                    bridges.push_back({u,v});
                 }
             }
             else
             {
-                // it is alredy visites, part of the component, if we remove that edge, it is still reachable
-                low[node]=min(low[node],low[it]);
+                low[u]=min(low[u],disc[v]);
             }
+
         }
     }
-public:
     vector<vector<int>> criticalConnections(int n, vector<vector<int>>& connections) {
         
-        // create graph from the connection
-        vector<vector<int>> adj(n);
+        vector<vector<int>> bridges;
+        vector<int> adj[n];
         for(int i=0;i<connections.size();i++)
         {
-            // undirected graph
-            adj[connections[i][0]].push_back(connections[i][1]);
-            adj[connections[i][1]].push_back(connections[i][0]);
+            int u = connections[i][0];
+            int v = connections[i][1];
+            adj[u].push_back(v);
+            adj[v].push_back(u);
         }
-        // for DFS, we will need
-        vector<bool> vis(n,false);
-        vector<int> tin(n,0);
-        vector<int> low(n,0);
-        // to store the bridges
-        vector<vector<int>> bridges;
-        dfs(0,-1,vis,adj,low,tin,bridges);
+        vector<int> low(n,-1),disc(n,-1);
+
+        dfs(0,-1,low,disc,adj,bridges);
         return bridges;
     }
 };
-// Time Complexity: O(V+2E)
-// Space Complexity: O(V+2E) + O(3*V)
+// Time Complexity: O(V+2E) where V = no. of vertices, E = no. of edges. It is because the algorithm is just a simple DFS traversal.
+// Space Complexity: O(V+2E) + O(2*V) where V = no. of vertices, E = no. of edges. O(V+2E) to store the graph in an adjacency list and O(2V) for the two arrays i.e. tin, low,  each of size V.
