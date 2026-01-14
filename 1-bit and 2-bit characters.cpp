@@ -10,7 +10,6 @@ public:
             i+=bits[i]+1;
         }
         return i==n-1;
-       
     }
 };
 // Time complexity: O(n)
