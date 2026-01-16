@@ -11,6 +11,7 @@ public:
     DisjointSet(int n) {
         parent.resize(n, 0);
         rank.resize(n, 0);
+        
         size.resize(n);
         for (int i = 0; i < n; i++) {
             parent[i] = i;
