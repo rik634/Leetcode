@@ -1,5 +1,7 @@
 ## Problem statement
-
+- Given an array nums of positive integers, the task is to find the largest subset such that every pair (a, b) of elements in the subset satisfies a % b == 0 or b % a == 0.
+- Return the subset in any order. If there are multiple solutions, return any one of them.
+- Note: As there can be multiple correct answers, the compiler returns 1 if the answer is valid, else 0.
 
 ### Recursion
 ```cpp
