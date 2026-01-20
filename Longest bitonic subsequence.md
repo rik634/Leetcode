@@ -1,7 +1,8 @@
-// Level: meidum
+## Problem statement
+- Given an array arr of n integers, the task is to find the length of the longest bitonic sequence. A sequence is considered bitonic if it first increases, then decreases. The sequence does not have to be contiguous
 
-// bitonic subsequence can be strongly increasing, strongly increasing or both increasing first and then decreasing
-
+- bitonic subsequence can be strongly increasing, strongly increasing or both increasing first and then decreasing
+```cpp
 int longestBitonicSequence(vector<int>& arr, int n) {
     // Initialize two arrays to store the increasing and decreasing subsequences
     vector<int> dp1(n, 1); // dp1[i] stores the length of the longest increasing subsequence ending at arr[i]
@@ -34,13 +35,13 @@ int longestBitonicSequence(vector<int>& arr, int n) {
 
     return maxi;
 }
+```
+- Time Complexity: O(n^2)
+- Space Complexity: O(n) for the dp arrays.
 
-// - Time Complexity: O(n^2)
-// - Space Complexity: O(n) for the dp arrays.
 
-
-// bitonic subsequence can not be strongly increasing or strongly secreasing
-
+-bitonic subsequence can not be strongly increasing or strongly secreasing
+```cpp
 class Solution {
   public:
     int LongestBitonicSequence(int n, vector<int> nums) {
@@ -69,7 +70,7 @@ class Solution {
         return ans;
     }
 };
-
-// - Time Complexity: O(n^2)
-// - Space Complexity: O(n) for the dp arrays.
+```
+- Time Complexity: O(n^2)
+- Space Complexity: O(n) for the dp arrays.
 
