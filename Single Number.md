@@ -1,6 +1,8 @@
-// Level: Easy
-// Link: https://leetcode.com/problems/single-number/description/
-// Solution
+## Problem statement
+- Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+
+### Solution
+```cpp
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
@@ -12,10 +14,13 @@ public:
         return num;
     }
 };
-// Time Complexity: O(N) (N = Number of elements in array)
-// Space Complexity: O(1)
+```
+- Time Complexity: O(N) (N = Number of elements in array)
+- Space Complexity: O(1)
 
-// if the array is already sorted, this can be optimized further
+### Optimized
+- if the array is already sorted, this can be optimized further
+```cpp
 class Solution {
 public:
     int singleNonDuplicate(vector<int>& nums) {
@@ -37,5 +42,6 @@ public:
         return nums[low];
     }
 };
-// time complexity: O(logn)
-// space complexity:O(1)
+```
+- time complexity: O(logn)
+- space complexity:O(1)
