@@ -203,7 +203,7 @@ public:
 - Time complexity: O(n)
 - Space complexity: O(n) (recursive stack space+vector)
 
-- Iterative approach
+- Iterative approach (using one stack)
 ```cpp
 class Solution {
 public:
@@ -234,3 +234,75 @@ public:
 ```
 - Time complexity: o(N)
 - Space complexity: O(h), h=height of tree for stack
+
+- Iterative approach (using 2 stacks)
+```cpp
+class Solution {
+public:
+    vector<int> postorderTraversal(TreeNode* root) {
+
+        vector<int> res;
+        if (root == NULL) {
+            return {};
+        }
+        stack<TreeNode*> st,st1;
+        st.push(root);
+
+        while (!st.empty()) {
+            TreeNode* node = st.top();
+            st.pop();
+            st1.push(node);
+            if (node->left != NULL) {
+                st.push(node->left);
+            }
+            if (node->right != NULL) {
+                st.push(node->right);
+            }
+        }
+        while(!st1.empty())
+        {
+            res.push_back(st1.top()->val);
+            st1.pop();
+        }
+        return res;
+    }
+};
+```
+- Time complexity: O(n)
+- Space complexity: O(n)+ O(h)
+
+### Level order Traversal
+```cpp
+class Solution {
+public:
+    vector<vector<int>> levelOrder(TreeNode* root) {
+
+        vector<vector<int>> res;
+        queue<TreeNode*> q;
+        if (root == NULL) {
+            return {};
+        }
+        q.push(root);
+        while (!q.empty()) {
+            int size = q.size();
+            vector<int> temp;
+            for (int i = 0; i < size; i++) {
+                auto p = q.front();
+                q.pop();
+                temp.push_back(p->val);
+                if (p->left != NULL) {
+                    q.push(p->left);
+                }
+                if (p->right != NULL) {
+                    q.push(p->right);
+                }
+            }
+            res.push_back(temp);
+        }
+        return res;
+    }
+};
+```
+- Time Complexity: O(N), where N is the number of nodes in the binary tree. Each node is visited once during the level-order traversal.
+- Space Complexity: O(N), where N is the number of nodes in the binary tree. The space is used by the queue to store nodes at each level, and in the worst case, it can hold all nodes at the last level.
+
