@@ -393,3 +393,19 @@ public:
 ```
 - Time Complexity: O(3*N), we process each node thrice, once for every traversal.
 - Space Complexity: O(4*N), extra space used for storing postorder, inorder, preorder traversal and stack.
+
+### Height of binary tree
+```cpp
+class Solution {
+public:
+    int height(TreeNode* node) {
+        if (node == NULL) {
+            return 0;
+        }
+        return 1 + max(height(node->left), height(node->right));
+    }
+    int maxDepth(TreeNode* root) { return height(root); }
+};
+```
+- Time Complexity: O(N), each node is processed once in Level Order Traversal.
+- Space Complexity: O(N), in worst case, a maximum of N/2 nodes can be present in queue.
