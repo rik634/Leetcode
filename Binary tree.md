@@ -409,3 +409,58 @@ public:
 ```
 - Time Complexity: O(N), each node is processed once in Level Order Traversal.
 - Space Complexity: O(N), in worst case, a maximum of N/2 nodes can be present in queue.
+
+### Diameter of binary tree
+- Brute force
+```cpp
+class Solution {
+public:
+    int height(TreeNode* node) {
+        if (node == NULL) {
+            return 0;
+        }
+        return 1 + max(height(node->left), height(node->right));
+    }
+    int diameterOfBinaryTree(TreeNode* root) {
+
+        if (root == NULL) {
+            return 0;
+        }
+
+        int lh = height(root->left);
+        int rh = height(root->right);
+        int d = lh + rh;
+        int dl = diameterOfBinaryTree(root->left);
+        int dr = diameterOfBinaryTree(root->right);
+        return max(d, max(dl, dr));
+    }
+};
+```
+- Time complexity: O(n*n)
+- Space complexiy: O(1)
+
+- Optimized
+```cpp
+class Solution {
+public:
+    int height(TreeNode* node, int& d)
+    {
+        if(node==NULL)
+        {
+            return 0;
+        }
+        int lh = height(node->left,d);
+        int rh = height(node->right,d);
+        d=max(d,lh+rh);
+        return 1 + max(lh,rh);
+    }
+    int diameterOfBinaryTree(TreeNode* root) {
+        
+        int d=0;
+        height(root,d);
+        return d;
+    }
+};
+```
+- Time complexity: O(n)
+- Space complexity: O(1)   
