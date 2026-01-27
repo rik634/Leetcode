@@ -2,7 +2,6 @@
 class Solution {
 public:
     bool hasIncreasingSubarrays(vector<int>& nums, int k) {
-        
         int n = nums.size();
         int count=1;
         int preCount=0;
