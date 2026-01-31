@@ -21,3 +21,23 @@ public:
 ```
 - Time complexity: O(logN) (during each recurive call, we discard half of its subtree)
 - Space complexity: O(logN) 
+
+### Another approach
+```cpp
+class Solution {
+public:
+    TreeNode* searchBST(TreeNode* root, int val) {
+
+        while (root != NULL && root->val != val) {
+            if (root->val < val) {
+                root = root->right;
+            } else {
+                root = root->left;
+            }
+        }
+        return root;
+    }
+};
+```
+- Time complexity: O(logN)
+- Space complexity: O(1)
