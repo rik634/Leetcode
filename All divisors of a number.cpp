@@ -14,6 +14,7 @@ public:
         return ans;
     }
 };
+
 // time complexity: O(n)
 // space complexity: O(sqrt(n)) A number N can have at max 2*sqrt(N) divisors, which are stored in the array.
 
