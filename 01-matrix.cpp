@@ -8,7 +8,6 @@ public:
     vector<int> dy={1,-1,0,0};
     vector<vector<int>> updateMatrix(vector<vector<int>>& mat) {
         int m = mat.size();
-        
       int n = mat[0].size();
         vector<vector<int>> dp(m,vector<int>(n,-1));
         queue<pair<int,int>> q;
