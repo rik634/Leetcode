@@ -3,7 +3,6 @@
 // brute force:
 #include <bits/stdc++.h>
 using namespace std;
-
 // Class to solve the Aggressive Cows problem
 class Solution {
 public:
