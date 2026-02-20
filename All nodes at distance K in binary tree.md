@@ -4,6 +4,7 @@
 ### Logic:
 - To find all nodes at a specific distance K from a given target node, we must be able to move both downward (to children) and upward (to parent). Since the binary tree doesn’t store parent links, we simulate this by converting the tree into an undirected graph. This allows traversal in all directions: left, right, and parent.
 - Once we treat the tree as a graph, we perform a standard Breadth-First Search (BFS) starting from the target node and collect all nodes that are exactly K steps away.
+  
   1. Build the Parent Map:
      - Traverse the entire binary tree using either BFS or DFS and map each node to its parent node. This step effectively adds upward connectivity to the tree, allowing access to parent nodes during traversal.
        1. Create a parentMap where each key is a child node and its value is the corresponding parent node.
