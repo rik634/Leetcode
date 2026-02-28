@@ -14,6 +14,7 @@ public:
         int j = n - 1;
         string s = "";
         int carry = 0;
+
         while (i >= 0 && j >= 0) {
             if (a[i] == '0' && b[j] == '0') {
                 s += (carry == 0) ? '0' : '1';
