@@ -1,5 +1,8 @@
 ## problem statement
-
+- Given a set of distinct positive integers nums, return the largest subset answer such that every pair (answer[i], answer[j]) of elements in this subset satisfies:
+  1. answer[i] % answer[j] == 0, or
+  2. answer[j] % answer[i] == 0
+- If there are multiple solutions, return any of them.
 
 
 ### Brute force
