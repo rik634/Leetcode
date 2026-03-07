@@ -1,6 +1,7 @@
 ## Problem statement
 - Given the root of a binary tree, the value of a target node target, and an integer k. Return an array of the values of all nodes that have a distance k from the target node. The answer can be returned in any order (N represents null).
 
+
 ### Logic:
 - To find all nodes at a specific distance K from a given target node, we must be able to move both downward (to children) and upward (to parent). Since the binary tree doesn’t store parent links, we simulate this by converting the tree into an undirected graph. This allows traversal in all directions: left, right, and parent.
 - Once we treat the tree as a graph, we perform a standard Breadth-First Search (BFS) starting from the target node and collect all nodes that are exactly K steps away.
