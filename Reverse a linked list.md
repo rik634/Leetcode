@@ -1,7 +1,9 @@
-// level: easy
-//Given the head of a singly linked list, write a program to reverse the linked list, and return the head pointer to the reversed list.
-// brute force (iterative)
 
+## Problem statement
+- Given the head of a singly linked list, write a program to reverse the linked list, and return the head pointer to the reversed list.
+
+### brute force (iterative)
+```cpp
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
@@ -24,10 +26,12 @@ public:
         return head;
     }
 };
-// time complexity:O(2*n) (n= length of linked list) =O(n)
-// space complexity:O(n)
+```
+- time complexity:O(2*n) (n= length of linked list) =O(n)
+- space complexity:O(n)
 
-// optimal approach (iterative)
+### optimal approach (iterative)
+```cpp
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
@@ -45,10 +49,12 @@ public:
         return prev;
     }
 };
-// time complexity:O(n)
-// space complexity:O(1)
+```
+- time complexity:O(n)
+- space complexity:O(1)
 
-// optimized (recursive)
+### optimized (recursive)
+```cpp
 class Solution {
 public:
     // Recursive function to reverse the linked list
@@ -73,5 +79,6 @@ public:
         return newHead;
     }
 };
-// time complexity:O(n)
-// space complexity:O(n) (recursive stack space)
+```
+- time complexity:O(n)
+-  space complexity:O(n) (recursive stack space)
