@@ -1,8 +1,9 @@
-// level: Medium
-// problem statement: We are given an array Arr with N distinct coins and a target. We have an infinite supply of each coin denomination. 
-//We need to find the number of ways we sum up the coin values to give us the target.
+## problem statement: 
+- We are given an array Arr with N distinct coins and a target. We have an infinite supply of each coin denomination. 
+- We need to find the number of ways we sum up the coin values to give us the target.
 
-// recursion:
+### recursion:
+```cpp
 class Solution {
 public:
     int f(int ind, int amount, vector<int>& coins) {
@@ -25,10 +26,12 @@ public:
         return f(n - 1, amount, coins);
     }
 };
-// Time complexity: O(2^(n+amount))
-// space complexity: O(n+amount) (recursive stack space)
+```
+- Time complexity: O(2^(n+amount))
+- space complexity: O(n+amount) (recursive stack space)
 
-// memoization:
+### memoization:
+```cpp
 class Solution {
 public:
     int f(int ind, int amount, vector<int>& coins, vector<vector<int>>& dp) {
@@ -55,10 +58,12 @@ public:
         return f(n - 1, amount, coins, dp);
     }
 };
-// Time complexity: O(n*amount)
-// space complexity: O(n*amount) + O(n+amount) (recursive stack space)
+```
+- Time complexity: O(n*amount)
+- space complexity: O(n*amount) + O(n+amount) (recursive stack space)
 
-// tabulation
+### tabulation
+```cpp
 class Solution {
 public:
     int change(int amount, vector<int>& coins) {
@@ -87,10 +92,12 @@ public:
         return dp[n - 1][amount];
     }
 };
-// Time complexity: O(n*amount)
-// space complexity: O(n*amount)
+```
+- Time complexity: O(n*amount)
+- space complexity: O(n*amount)
 
-// space optimized
+### space optimized
+```cpp
 class Solution {
 public:
     int change(int amount, vector<int>& coins) {
@@ -119,6 +126,7 @@ public:
         return prev[amount];
     }
 };
-// Time complexity: O(n*amount)
-// space complexity: O(amount)
+```
+- Time complexity: O(n*amount)
+-  space complexity: O(amount)
 
