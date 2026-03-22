@@ -2,7 +2,6 @@
 // Link: https://leetcode.com/problems/accounts-merge/description/
 // problem statement: 
 
-
 // solution:
 class DisjointSet {
     vector<int> parent, rank, size;
