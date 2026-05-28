@@ -4,6 +4,7 @@
 // iterative approach (reverse, do the addition operation, reverse again)
 class Solution {
 public:
+
     // function to reverse the linked list
     Node* reverseList(Node* node) {
         Node* prev = nullptr;
