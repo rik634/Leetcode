@@ -1,4 +1,6 @@
-// Level: Easy
+
+### Solution
+```cpp
 class Solution {
 public:
     bool isOneBitCharacter(vector<int>& bits) {
@@ -13,5 +15,6 @@ public:
     }
 
 };
-// Time complexity: O(n)
-// Space complexity: O(1)
+```
+- Time complexity: O(n)
+- Space complexity: O(1)
