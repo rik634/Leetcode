@@ -1,4 +1,4 @@
-# Pattern -1: Pure math/ closed form
+# Pattern -1: Single integer state, Pure math/ closed form
 
 ## Use case:
 - When: state is single number (stones in a pile, tokens on a line)
@@ -27,5 +27,8 @@
 
 ### Practice problem
 1. https://www.hackerrank.com/challenges/game-of-stones-1
-2. 
+2. https://leetcode.com/problems/divisor-game/description/
+3. https://leetcode.com/problems/nim-game/description/
+4. https://leetcode.com/problems/find-the-winning-player-in-coin-game/description
+5. 
 -
