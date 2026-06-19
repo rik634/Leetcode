@@ -30,5 +30,5 @@
 2. https://leetcode.com/problems/divisor-game/description/
 3. https://leetcode.com/problems/nim-game/description/
 4. https://leetcode.com/problems/find-the-winning-player-in-coin-game/description
-5. 
+5. https://leetcode.com/problems/vowels-game-in-a-string/description/?envType=problem-list-v2&envId=game-theory
 -
