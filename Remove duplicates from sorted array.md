@@ -54,7 +54,9 @@ public:
   
 ### Better (two pointer)
 - Keep a slow pointer starting at index 0. Walk through the array with a fast pointer starting at index 1. Whenever nums at fast is different from nums at slow, move slow one step forward and copy the fast value into that slot.
-  
+- The slow pointer only advances when a genuinely new value is found, so it always lands exactly one position past the last unique value written. Because nums is sorted, once we move past a value we will never see it again, so writing over old slots is always safe.
+- Mention early that the array being sorted is what allows a simple neighbour check instead of a hash set. This shows the interviewer that the solution is chosen because of the specific constraint given, not just copied from memory.
+- If the interviewer asks "what if the array were not sorted", think: a hash set would then be needed to know if a value has been seen before, since duplicates would no longer sit next to each other.
 ```cpp
 class Solution {
 public:
@@ -74,3 +76,6 @@ public:
 ```
 - Time complexity: O(N)
 - Space complexity: O(1)
+
+
+## Follow-up question
