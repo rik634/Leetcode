@@ -26,6 +26,31 @@ public:
 - Time complexity: O(nlogk)
 - Space complexity: O(k)
 
+### solution
+```cpp
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+
+        int n = nums.size();
+        unordered_set<int> st;
+        int i=1;
+        int j=1;
+        st.insert(nums[0]);
+        while(j<n){
+            if(st.find(nums[j])==st.end()){
+                nums[i]=nums[j];
+                i++;
+                st.insert(nums[j]);
+            }
+            j++;
+        }
+        return st.size();
+    }
+};
+```
+- Time complexity: O(n)
+- Space complexity: O(k)
 ### Better (two pointer)
 
 ```cpp
