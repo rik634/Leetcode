@@ -51,8 +51,10 @@ public:
 ```
 - Time complexity: O(n)
 - Space complexity: O(k)
+  
 ### Better (two pointer)
-
+- Keep a slow pointer starting at index 0. Walk through the array with a fast pointer starting at index 1. Whenever nums at fast is different from nums at slow, move slow one step forward and copy the fast value into that slot.
+  
 ```cpp
 class Solution {
 public:
